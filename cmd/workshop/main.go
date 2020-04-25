@@ -4,9 +4,9 @@ import (
 	"log"
 	"net/http"
 
-	"workshop/internal/handler"
-
+	"workshop/internal/api/jokes"
 	"workshop/internal/config"
+	"workshop/internal/handler"
 
 	"github.com/go-chi/chi"
 	"github.com/ilyakaznacheev/cleanenv"
@@ -20,7 +20,9 @@ func main() {
 		log.Fatal(err)
 	}
 
-	h := handler.NewHandler()
+	apiClient := jokes.NewJokeClient()
+
+	h := handler.NewHandler(apiClient)
 
 	r := chi.NewRouter()
 
