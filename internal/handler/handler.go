@@ -22,5 +22,5 @@ func (h *Handler) Hello(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
-	fmt.Fprint(w, "hello golang")
+	fmt.Fprint(w, joke.Joke)
 }
