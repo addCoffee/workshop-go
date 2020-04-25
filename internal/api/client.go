@@ -1,7 +1,6 @@
 package api
 
-// Client
-type Client struct {
+type Client interface {
 	// GetJore returns one joke
 	GetJoke() (*JokeResponse, error)
 }

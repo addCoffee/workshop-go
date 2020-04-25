@@ -15,9 +15,9 @@ type JokeClient struct {
 	url string
 }
 
-func NewJokeClient(baseUrl string) &JokeClient {
+func NewJokeClient(baseUrl string) *JokeClient {
 	return &JokeCLient{
-		url: baseUrl
+		url: baseUrl,
 	}
 }
 
@@ -38,5 +38,5 @@ func (jc *JokeClient) GetJoke() (string, error) {
 		return nil, err
 	}
 
-	return "", nil
+	return &data, nil
 }
