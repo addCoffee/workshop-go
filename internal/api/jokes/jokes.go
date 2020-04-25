@@ -16,19 +16,19 @@ type JokeClient struct {
 }
 
 func NewJokeClient(baseUrl string) *JokeClient {
-	return &JokeCLient{
+	return &JokeClient{
 		url: baseUrl,
 	}
 }
 
-func (jc *JokeClient) GetJoke() (string, error) {
+func (jc *JokeClient) GetJoke() (*api.JokeResponse, error) {
 	urlPath := jc.url + getJokePath
 
 	resp, err := http.Get(urlPath)
 	if err != nil {
 		return nil, err
 	} else if resp.StatusCode != http.StatusOK {
-		return nil, fmt.Errorf("API request status: %d", http.StatusText(resp.StatusCode))
+		return nil, fmt.Errorf("API request status: %s", http.StatusText(resp.StatusCode))
 	}
 
 	var data api.JokeResponse
